@@ -3,8 +3,8 @@ name: Show Git-Version
 run-name: "Workflow ${{ github.workflow }} on branch ${{ github.ref_name }} via ${{ github.event_name }}"
 on: 
   - workflow_dispatch
-  - push
-  - pull_request
+  # - push
+  # - pull_request
   
 jobs:
   demo:
