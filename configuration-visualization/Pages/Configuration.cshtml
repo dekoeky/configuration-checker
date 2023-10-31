@@ -1,0 +1,24 @@
+﻿@page
+@model          Pages.ConfigurationModel
+@{
+    ViewData["Title"] = "Configuration";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> @Model.ViewData["Title"] </h1>
+    <table class="table">
+        <tr  align="left">
+            <th align="left">Key</th>
+            <th align="left">Value</th>
+        </tr>
+        @foreach (var pair in Model.KeyValues)
+        {
+            <tr  align="left">
+                <td align="left">
+                    <a asp-page="./Value" asp-route-id="@pair.Key">@pair.Key</a>
+                </td>
+                <td align="left">@(pair.Value ?? "(NULL)")</td>
+            </tr>
+        }
+    </table>
+</div>
