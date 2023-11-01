@@ -2,7 +2,7 @@
 # Convenience Script for building the docker image
 
 # Inputs:
-$dockerFile = '.\configuration-visualization\Dockerfile'
+$dockerFile = './configuration-visualization/Dockerfile'
 $repo = 'dekoeky'
 $imageName = 'configuration-visualization'
 $tag = 'manual-build'
