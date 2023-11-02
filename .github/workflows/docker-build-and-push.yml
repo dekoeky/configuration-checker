@@ -52,6 +52,7 @@ jobs:
           context: .
           file: ./configuration-visualization/Dockerfile
           push: false
+          load: false
           tags: |
             dekoeky/configuration-visualization:latest
             dekoeky/configuration-visualization:${{steps.determine-version.outputs.majorMinorPatch}}
@@ -60,8 +61,3 @@ jobs:
             org.opencontainers.image.title=Configuration Visualization
             org.opencontainers.image.description=A simple tool to debug application configurations
             org.opencontainers.image.vendor=github.com/dekoeky
-          load: true
-
-
-      - name: Print images
-        run: docker image ls
