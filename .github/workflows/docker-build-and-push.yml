@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.0.0
         with:
-          images: ${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_IMAGE_NAME }}
+          images: dekoeky/configuration-visualization
           flavor: |
             latest=true
           tags: |
@@ -48,9 +48,6 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
-            type=ref,event=branch
-            type=ref,event=pr
-            type=sha
           labels: |
             maintainer=dekoeky
             org.opencontainers.image.title=Configuration Visualization
@@ -65,12 +62,9 @@ jobs:
         with:
           context: .
           file: ./configuration-visualization/Dockerfile
-          # push: ${{ github.event_name == 'workflow_dispatch' }}
           push: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          # cache-from: type=gha
-          # cache-to: type=gha,mode=max
 
       - name: Print images
         run: docker image ls
