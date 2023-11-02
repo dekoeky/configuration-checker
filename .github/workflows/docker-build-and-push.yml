@@ -11,6 +11,9 @@ on:
 
   workflow_dispatch:
   
+env:
+  FULL_DOCKER_IMAGE_NAME: ${{ vars.DOCKER_REGISTRY }}/${{ vars.DOCKER_IMAGE_NAME }}
+  
 
 jobs:
   build:
@@ -54,8 +57,8 @@ jobs:
           push: false
           load: false
           tags: |
-            dekoeky/configuration-visualization:latest
-            dekoeky/configuration-visualization:${{steps.determine-version.outputs.majorMinorPatch}}
+            ${{ env.FULL_DOCKER_IMAGE_NAME }}:latest
+            ${{ env.FULL_DOCKER_IMAGE_NAME }}:${{steps.determine-version.outputs.majorMinorPatch}}
           labels: |
             maintainer=dekoeky@GitHub
             org.opencontainers.image.title=Configuration Visualization
