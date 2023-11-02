@@ -1,7 +1,8 @@
 **/.classpath
 **/.dockerignore
 **/.env
-**/.git
+# Remark: .git folder is needed for MSBuild with GitVersion.MsBuild package!
+# **/.git
 **/.gitignore
 **/.project
 **/.settings
