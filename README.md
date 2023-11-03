@@ -18,8 +18,12 @@ dotnet run
 
 
 ### Docker
+
+
+Docker image available at [Docker Hub](https://hub.docker.com/repository/docker/dekoeky/configuration-visualization)
+
 ```console
-# To Be Implemented!
+docker run -p 80:80 dekoeky/configuration-visualization
 ```
 
 ### Native
