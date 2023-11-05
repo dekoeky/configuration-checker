@@ -1,0 +1,47 @@
+name: dekoeky-configuration-visualization-example
+
+services:
+
+  # This service has no additional configuration
+  basic:
+    image: dekoeky/configuration-visualization:${TAG}
+    build:
+      context: ..
+      dockerfile: configuration-visualization/Dockerfile
+    ports:
+      - 8080:80
+    environment:
+      - DemoName=basic
+
+  example1:
+    image: dekoeky/configuration-visualization:${TAG}
+    ports:
+      - 8081:80
+    environment:
+      - DemoName=example1
+      - SomeValueFromDockerComposeFile=alfa
+    env_file:
+      - shared.env
+      - 1.env
+
+  example2:
+    image: dekoeky/configuration-visualization:${TAG}
+    ports:
+      - 8082:80
+    environment:
+      - DemoName=example2
+      - SomeValueFromDockerComposeFile=bravo
+    env_file:
+      - shared.env
+      - 2.env
+
+  example3:
+    image: dekoeky/configuration-visualization:${TAG}
+    ports:
+      - 8083:80
+    environment:
+      - DemoName=example3
+      - SomeValueFromDockerComposeFile=charlie
+    env_file:
+      - shared.env
+      - 3.env
