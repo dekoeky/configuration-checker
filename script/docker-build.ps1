@@ -12,9 +12,15 @@ $fullRepoName = "${repo}/${imageName}"
 $fullImageName = "${fullRepoName}:${tag}"
 
 # Build:
-docker build --no-cache `
-  --tag $fullImageName `
-  -f $dockerFile .
+# docker build --no-cache `
+#   --tag $fullImageName `
+#   -f $dockerFile .
 
-# Show present tags:
-docker image ls $fullRepoName
+docker buildx build --no-cache `
+  --platform linux/arm64,linux/arm,linux/amd64 `
+  --push `
+  -f $dockerFile `
+  --tag $fullImageName .
+
+# # Show present tags:
+# docker image ls $fullRepoName

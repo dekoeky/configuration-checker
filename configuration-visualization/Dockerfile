@@ -5,16 +5,17 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+ARG TARGETARCH
 WORKDIR /src
 COPY ["configuration-visualization/configuration-visualization.csproj", "configuration-visualization/"]
-RUN dotnet restore "configuration-visualization/configuration-visualization.csproj"
+RUN dotnet restore "configuration-visualization/configuration-visualization.csproj" -a $TARGETARCH
 COPY . .
 WORKDIR "/src/configuration-visualization"
-RUN dotnet build "configuration-visualization.csproj" -c Release -o /app/build
+RUN dotnet build "configuration-visualization.csproj" -a $TARGETARCH -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "configuration-visualization.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "configuration-visualization.csproj" -a $TARGETARCH -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
