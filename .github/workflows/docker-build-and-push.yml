@@ -17,7 +17,7 @@ env:
 
 jobs:
   build:
-    name: 🐳 Build & Publish Docker Image
+    name: Build & Publish Docker Image
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -37,8 +37,10 @@ jobs:
       - name: Setup Docker buildx
         uses: docker/setup-buildx-action@v3.0.0
         with:
-          platforms: linux/arm64,linux/arm,linux/amd64
-          # driver: # Default should be docker container
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm
 
       # Login against a Docker registry except on PR
       # https://github.com/docker/login-action
@@ -67,4 +69,7 @@ jobs:
             org.opencontainers.image.title=Configuration Visualization
             org.opencontainers.image.description=A simple tool to debug application configurations
             org.opencontainers.image.vendor=github.com/dekoeky
-          platforms: linux/arm64,linux/arm,linux/amd64
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm
