@@ -1,0 +1,43 @@
+﻿@page
+@model Pages.HostInformationModel
+@{
+    ViewData["Title"] = "Host Information";
+}
+
+<div class="text-center">
+    <h1 class="display-4"> @Model.ViewData["Title"] </h1>
+    <table class="table">
+        <tr align="left">
+            <th align="left">Key</th>
+            <th align="left">Value</th>
+        </tr>
+        <tr align="left">
+            <td align="left">Bits (process)</td>
+            <td align="left">@Model.ProcessBits</td>
+        </tr>
+        <tr align="left">
+            <td align="left">Bits (os)</td>
+            <td align="left">@Model.OSBits</td>
+        </tr>
+        <tr align="left">
+            <td align="left">Machine</td>
+            <td align="left">@Model.MachineName</td>
+        </tr>
+        <tr align="left">
+            <td align="left">UserName</td>
+            <td align="left">@Model.UserName</td>
+        </tr>
+        <tr align="left">
+            <td align="left">.NET Version</td>
+            <td align="left">@Model.Version</td>
+        </tr>
+        <tr align="left">
+            <td align="left">OS Version</td>
+            <td align="left">@Model.OSVersion</td>
+        </tr>
+        <tr align="left">
+            <td align="left">Local Time</td>
+            <td align="left">@Model.CurrentLocalTime</td>
+        </tr>
+    </table>
+</div>
