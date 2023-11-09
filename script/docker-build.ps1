@@ -2,10 +2,10 @@
 # Convenience Script for building the docker image
 
 # Inputs:
-$dockerFile = './configuration-visualization/Dockerfile'
+$dockerFile = './configuration-visualization/Dockerfile.alpine'
 $repo = 'dekoeky'
 $imageName = 'configuration-visualization'
-$tag = 'manual-build'
+$tag = 'test-alpine'
 
 # Calculated Variables:
 $fullRepoName = "${repo}/${imageName}"
